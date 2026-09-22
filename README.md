@@ -1,4 +1,5 @@
 # LibraryDB
+<img src="https://socialify.git.ci/Qhathizwe/LibraryDB/image?language=1&owner=1&name=1&stargazers=1&theme=Light" alt="LibraryDB" width="640" height="320" />
 
 # Opening and Using pgAdmin 4 application
 # Step 1:
@@ -18,3 +19,33 @@
 
 # Step 2:
 # -Creating your tables 
+
+--Creating Authors Table 
+
+CREATE TABLE IF NOT EXISTS authors(
+id SERIAL PRIMARY KEY, 
+name VARCHAR(100) NOT NULL,
+nationality VARCHAR NOT NULL,
+birth_year SMALLINT NOT NULL,
+death_year SMALLINT 
+)
+
+-- Creating books table 
+CREATE TABLE IF NOT EXISTS books(
+ id SERIAL PRIMARY KEY,
+ title VARCHAR(255) NOT NULL,
+ authorID INT REFERENCES authors(id) NOT NULL,
+ genres INT[] NOT NULL,
+ published_year INT NOT NULL,
+ is_available BOOLEAN DEFAULT TRUE
+)
+
+--Creating Patrons table
+
+CREATE TABLE IF NOT EXISTS patrons(
+id SERIAL PRIMARY KEY,
+name VARCHAR(150) NOT NULL,
+email VARCHAR(150) NOT NULL,
+borrowed_books INT[]
+)
+
