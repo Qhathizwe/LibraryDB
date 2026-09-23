@@ -2,8 +2,8 @@
 <img src="https://socialify.git.ci/Qhathizwe/LibraryDB/image?language=1&owner=1&name=1&stargazers=1&theme=Light" alt="LibraryDB" width="640" height="320" />
 
 
-### Sprint 1: Project Setup
-## Opening and Using pgAdmin 4 application
+## Sprint 1: Project Setup
+### Opening and Using pgAdmin 4 application
 -Open pgAdmin4 Launch the application: Open the pgAdmin 4 application from your operating system's application menu or desktop shortcut.
 
 -Enter the Master Password: If prompted,enter your pgAdmin master password to unlock the application dashboard.
@@ -19,9 +19,9 @@
 -Right click on you database(LibraryDB) to open Query tool or (Alt + Shift + Q) shortcut to open Query tool.
 
 
-## -Creating your tables 
+### -Creating your tables 
 
-## Creating Authors Table 
+### Creating Authors Table 
 ```sql
 CREATE TABLE IF NOT EXISTS authors(
 id SERIAL PRIMARY KEY, 
@@ -31,7 +31,7 @@ birth_year SMALLINT NOT NULL,
 death_year SMALLINT 
 )
 ```
-## Creating books table 
+### Creating books table 
 ```sql
 CREATE TABLE IF NOT EXISTS books(
  id SERIAL PRIMARY KEY,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS books(
  is_available BOOLEAN 
 )
 ```
-## Creating Patrons table
+### Creating Patrons table
 ```sql
 CREATE TABLE IF NOT EXISTS patrons(
 id SERIAL PRIMARY KEY,
@@ -52,8 +52,8 @@ borrowed_books INT[]
 )
 ```
 
-### Sprint 2: Insert Data
-# INSERTING AUTHORS DATA INTO TABLE
+## Sprint 2: Insert Data
+### INSERTING AUTHORS DATA INTO TABLE
 ```sql
 INSERT INTO authors ( name, nationality, birth_year, death_year) 
 VALUES
@@ -78,7 +78,7 @@ VALUES
 ( 'J.R.R. Tolkien', 'British', 1892, 1973);
 ```
 
-# INSERTING BOOKS DATA INTO TABLE
+### INSERTING BOOKS DATA INTO TABLE
 ```sql
 INSERT INTO books (title, authorID, genres, published_year, is_available)
 VALUES 
@@ -103,7 +103,7 @@ VALUES
 ( 'The Hobbit', 10, ARRAY['Fantasy'], 1937, TRUE);
 ```
 
-# INSERTING DATA INTO THE PATRONS TABLE
+### INSERTING DATA INTO THE PATRONS TABLE
 ```sql
 INSERT INTO patrons (name, email, borrowed_books) 
 VALUES
@@ -127,95 +127,95 @@ VALUES
 
 ( 'Jack Anderson', 'jack@example.com', ARRAY[7, 8]);
 ```
-### Sprint 3: Read Operations (Queries)
-## Get all books
+## Sprint 3: Read Operations (Queries)
+### Get all books
 ```sql
 -- SELECT * FROM books
 ```
-## Get a book by title
+### Get a book by title
 ```sql
 -- SELECT * FROM books 
 -- WHERE title = 'War and Peace'
 ```
-## Get all books by a specific author.
+### Get all books by a specific author.
 ```sql
 -- SELECT * FROM books 
 -- WHERE authorID = 2
 ```
-## Get all available books
+### Get all available books
 ```sql
 -- SELECT * FROM books
 -- WHERE is_available = TRUE
 ```
-### Sprint 4: Update Operations
-## Mark a book as borrowed (set available = false)
+## Sprint 4: Update Operations
+### Mark a book as borrowed (set available = false)
 ```sql
 -- UPDATE books
 -- SET is_available = FALSE
 -- WHERE id = 1
 ```
 
-## Add a new genre to an existing book.
+### Add a new genre to an existing book.
 ```sql
 -- UPDATE books 
 -- set genres[2] = 'Comedy'
 -- WHERE id = 10
 ```
 
-## Add a borrowed book to a patron’s record.
+### Add a borrowed book to a patron’s record.
 ```sql
 
 -- UPDATE patrons
 -- SET borrowed_books[1] = 7
 -- WHERE id = 1
 ```
-### Sprint 5: Delete Operations
-## Delete a book by title.
+## Sprint 5: Delete Operations
+### Delete a book by title.
 ```sql
 -- DELETE FROM books
 -- WHERE title = '1984'
 ```
 
-## Delete an author by ID.
+### Delete an author by ID.
 ```sql
 -- DELETE FROM authors 
 -- WHERE id = 1
 ```
 
-### Sprint 6: Advanced Queries
+## Sprint 6: Advanced Queries
 
-## Find books published after 1950.
+### Find books published after 1950.
 ```sql
 -- SELECT * FROM books
 -- WHERE published_year > 1950
 ```
 
-## Find all American authors.
+### Find all American authors.
 ```sql
 -- SELECT * FROM authors 
 -- WHERE nationality = 'America'
 ```
 
-## Set all books as available.
+### Set all books as available.
 ```sql
 -- UPDATE books
 -- SET is_available = TRUE
 ```
 
-## Find all books that are available AND published after 1950.
+### Find all books that are available AND published after 1950.
 ```sql
 -- SELECT * FROM books
 -- WHERE is_available = TRUE AND  published_year > 1950
 ```
 
 
-## Find authors whose names contain "George".
+### Find authors whose names contain "George".
 ```sql
 -- SELECT name FROM authors
 -- WHERE name LIKE '%Herman%'
 ```
 
-## Increment the published year 1869 by 1.
+### Increment the published year 1869 by 1.
 ```sql
 -- UPDATE books
 -- SET published_year = published_year + 1
