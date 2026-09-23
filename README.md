@@ -20,8 +20,8 @@
 # Step 2:
 # -Creating your tables 
 
---Creating Authors Table 
-
+## Creating Authors Table 
+```sql
 CREATE TABLE IF NOT EXISTS authors(
 id SERIAL PRIMARY KEY, 
 name VARCHAR(100) NOT NULL,
@@ -29,8 +29,9 @@ nationality VARCHAR NOT NULL,
 birth_year SMALLINT NOT NULL,
 death_year SMALLINT 
 )
-
---Creating books table 
+```
+## Creating books table 
+```sql
 CREATE TABLE IF NOT EXISTS books(
  id SERIAL PRIMARY KEY,
  title VARCHAR(255) NOT NULL,
@@ -39,18 +40,19 @@ CREATE TABLE IF NOT EXISTS books(
  published_year INT NOT NULL,
  is_available BOOLEAN 
 )
-
---Creating Patrons table
-
+```
+## Creating Patrons table
+```sql
 CREATE TABLE IF NOT EXISTS patrons(
 id SERIAL PRIMARY KEY,
 name VARCHAR(150) NOT NULL,
 email VARCHAR(150) NOT NULL,
 borrowed_books INT[]
 )
+```
 
---Inserting authors data into the table
-
+## Inserting authors data into the table
+```sql
 INSERT INTO authors ( name, nationality, birth_year, death_year) 
 VALUES
 ( 'George Orwell', 'British', 1903, 1950),
@@ -72,10 +74,10 @@ VALUES
 ( 'Fyodor Dostoevsky', 'Russian', 1821, 1881),
 
 ( 'J.R.R. Tolkien', 'British', 1892, 1973);
+```
 
-
---Inserting books into the books table
-
+### Inserting books into the books table
+```sql
 INSERT INTO books (title, authorID, genres, published_year, is_available)
 VALUES 
 ( '1984', 1, ARRAY['Dystopian', 'Political Fiction'], 1949, TRUE),
@@ -97,9 +99,10 @@ VALUES
 ( 'Crime and Punishment', 9, ARRAY['Philosophical Novel'], 1866, TRUE),
 
 ( 'The Hobbit', 10, ARRAY['Fantasy'], 1937, TRUE);
+```
 
-
---INSERTING DATA INTO THE PATRONS TABLE
+## INSERTING DATA INTO THE PATRONS TABLE
+```sql
 INSERT INTO patrons (name, email, borrowed_books) 
 VALUES
 ( 'Alice Johnson', 'alice@example.com', ARRAY[]::INT[]),
@@ -121,6 +124,117 @@ VALUES
 ( 'Ivy Taylor', 'ivy@example.com', ARRAY[]::INT[]),
 
 ( 'Jack Anderson', 'jack@example.com', ARRAY[7, 8]);
+```
+## Get all books
+```sql
+-- SELECT * FROM books
+```
+## Get a book by title
+```sql
+-- SELECT * FROM books 
+-- WHERE title = 'War and Peace'
+```
+## Get all books by a specific author.
+```sql
+-- SELECT * FROM books 
+-- WHERE authorID = 2
+```
+## Get all available books
+```sql
+-- SELECT * FROM books
+-- WHERE is_available = TRUE
+```
+
+## Mark a book as borrowed (set available = false)
+```sql
+-- UPDATE books
+-- SET is_available = FALSE
+-- WHERE id = 1
+```
+
+## Add a new genre to an existing book.
+```sql
+-- UPDATE books 
+-- set genres[2] = 'Comedy'
+-- WHERE id = 10
+```
+
+## Add a borrowed book to a patron’s record.
+```sql
+
+-- UPDATE patrons
+-- SET borrowed_books[1] = 7
+-- WHERE id = 1
+```
+
+## Delete a book by title.
+```sql
+-- DELETE FROM books
+-- WHERE title = '1984'
+```
+
+## Delete an author by ID.
+```sql
+-- DELETE FROM authors 
+-- WHERE id = 1
+```
+
+
+## Find books published after 1950.
+```sql
+-- SELECT * FROM books
+-- WHERE published_year > 1950
+```
+
+## Find all American authors.
+```sql
+-- SELECT * FROM authors 
+-- WHERE nationality = 'America'
+```
+
+## Set all books as available.
+```sql
+-- UPDATE books
+-- SET is_available = TRUE
+```
+
+## Find all books that are available AND published after 1950.
+```sql
+-- SELECT * FROM books
+-- WHERE is_available = TRUE AND  published_year > 1950
+```
+
+## Find all American authors.
+```sql
+-- SELECT * FROM authors 
+-- WHERE nationality = 'America'
+```
+
+## Set all books as available.
+```sql
+-- UPDATE books
+-- SET is_available = TRUE
+```
+
+## Find all books that are available AND published after 1950.
+```sql
+-- SELECT * FROM books
+-- WHERE is_available = TRUE AND  published_year > 1950
+```
+
+## Find authors whose names contain "George".
+```sql
+-- SELECT name FROM authors
+-- WHERE name LIKE '%Herman%'
+```
+
+## Increment the published year 1869 by 1.
+```sql
+-- UPDATE books
+-- SET published_year = published_year + 1
+-- WHERE id = 8
+```
+
 
 
 
