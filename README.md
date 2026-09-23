@@ -1,8 +1,9 @@
 # LibraryDB
 <img src="https://socialify.git.ci/Qhathizwe/LibraryDB/image?language=1&owner=1&name=1&stargazers=1&theme=Light" alt="LibraryDB" width="640" height="320" />
 
-# Opening and Using pgAdmin 4 application
-# Step 1:
+
+### Sprint 1: Project Setup
+## Opening and Using pgAdmin 4 application
 -Open pgAdmin4 Launch the application: Open the pgAdmin 4 application from your operating system's application menu or desktop shortcut.
 
 -Enter the Master Password: If prompted,enter your pgAdmin master password to unlock the application dashboard.
@@ -17,8 +18,8 @@
 
 -Right click on you database(LibraryDB) to open Query tool or (Alt + Shift + Q) shortcut to open Query tool.
 
-# Step 2:
-# -Creating your tables 
+
+## -Creating your tables 
 
 ## Creating Authors Table 
 ```sql
@@ -51,7 +52,8 @@ borrowed_books INT[]
 )
 ```
 
-## Sprint 2: Insert Data
+### Sprint 2: Insert Data
+# INSERTING AUTHORS DATA INTO TABLE
 ```sql
 INSERT INTO authors ( name, nationality, birth_year, death_year) 
 VALUES
@@ -76,7 +78,7 @@ VALUES
 ( 'J.R.R. Tolkien', 'British', 1892, 1973);
 ```
 
-### Inserting books into the books table
+# INSERTING BOOKS DATA INTO TABLE
 ```sql
 INSERT INTO books (title, authorID, genres, published_year, is_available)
 VALUES 
@@ -101,7 +103,7 @@ VALUES
 ( 'The Hobbit', 10, ARRAY['Fantasy'], 1937, TRUE);
 ```
 
-## INSERTING DATA INTO THE PATRONS TABLE
+# INSERTING DATA INTO THE PATRONS TABLE
 ```sql
 INSERT INTO patrons (name, email, borrowed_books) 
 VALUES
@@ -125,6 +127,7 @@ VALUES
 
 ( 'Jack Anderson', 'jack@example.com', ARRAY[7, 8]);
 ```
+### Sprint 3: Read Operations (Queries)
 ## Get all books
 ```sql
 -- SELECT * FROM books
@@ -144,7 +147,7 @@ VALUES
 -- SELECT * FROM books
 -- WHERE is_available = TRUE
 ```
-
+### Sprint 4: Update Operations
 ## Mark a book as borrowed (set available = false)
 ```sql
 -- UPDATE books
@@ -166,7 +169,7 @@ VALUES
 -- SET borrowed_books[1] = 7
 -- WHERE id = 1
 ```
-
+### Sprint 5: Delete Operations
 ## Delete a book by title.
 ```sql
 -- DELETE FROM books
@@ -179,6 +182,7 @@ VALUES
 -- WHERE id = 1
 ```
 
+### Sprint 6: Advanced Queries
 
 ## Find books published after 1950.
 ```sql
@@ -204,23 +208,6 @@ VALUES
 -- WHERE is_available = TRUE AND  published_year > 1950
 ```
 
-## Find all American authors.
-```sql
--- SELECT * FROM authors 
--- WHERE nationality = 'America'
-```
-
-## Set all books as available.
-```sql
--- UPDATE books
--- SET is_available = TRUE
-```
-
-## Find all books that are available AND published after 1950.
-```sql
--- SELECT * FROM books
--- WHERE is_available = TRUE AND  published_year > 1950
-```
 
 ## Find authors whose names contain "George".
 ```sql
