@@ -51,7 +51,7 @@ borrowed_books INT[]
 )
 ```
 
-## Inserting authors data into the table
+## Sprint 2: Insert Data
 ```sql
 INSERT INTO authors ( name, nationality, birth_year, death_year) 
 VALUES
